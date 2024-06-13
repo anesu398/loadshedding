@@ -1,0 +1,52 @@
+{
+  "name": "loadshedding-notifier",
+  "displayName": "Load-shedding Notifier",
+  "description": "Notifies developers of upcoming load-shedding events",
+  "version": "0.0.1",
+  "publisher": "Anesu Prince Ndava",
+  "engines": {
+      "vscode": "^1.50.0"
+  },
+  "categories": [
+      "Other"
+  ],
+  "activationEvents": [
+      "onCommand:extension.checkLoadshedding"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+      "commands": [
+          {
+              "command": "extension.checkLoadshedding",
+              "title": "Check Load-shedding Schedule"
+          }
+      ],
+      "configuration": {
+          "type": "object",
+          "title": "Load-shedding Notifier Configuration",
+          "properties": {
+              "loadsheddingNotifier.apiEndpoint": {
+                  "type": "string",
+                  "default": "https://api.example.com/loadshedding",
+                  "description": "API endpoint to fetch load-shedding schedules"
+              },
+              "loadsheddingNotifier.checkInterval": {
+                  "type": "number",
+                  "default": 15,
+                  "description": "Interval in minutes to check for load-shedding updates"
+              },
+              "loadsheddingNotifier.notificationThreshold": {
+                  "type": "number",
+                  "default": 30,
+                  "description": "Threshold in minutes to notify about upcoming load-shedding events"
+              }
+          }
+      }
+  },
+  "scripts": {
+      "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+      "axios": "^0.21.0"
+  }
+}
